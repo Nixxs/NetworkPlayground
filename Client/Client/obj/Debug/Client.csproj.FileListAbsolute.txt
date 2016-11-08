@@ -7,3 +7,11 @@ C:\working\Home\Sandbox\Client\Client\bin\Debug\Lidgren.Network.xml
 C:\working\Home\Sandbox\Client\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
 C:\working\Home\Sandbox\Client\Client\obj\Debug\Client.exe
 C:\working\Home\Sandbox\Client\Client\obj\Debug\Client.pdb
+C:\_nick\working\NetworkPlayground\Client\Client\bin\Debug\Client.exe.config
+C:\_nick\working\NetworkPlayground\Client\Client\obj\Debug\Client.exe
+C:\_nick\working\NetworkPlayground\Client\Client\obj\Debug\Client.pdb
+C:\_nick\working\NetworkPlayground\Client\Client\bin\Debug\Client.exe
+C:\_nick\working\NetworkPlayground\Client\Client\bin\Debug\Client.pdb
+C:\_nick\working\NetworkPlayground\Client\Client\bin\Debug\Lidgren.Network.pdb
+C:\_nick\working\NetworkPlayground\Client\Client\bin\Debug\Lidgren.Network.xml
+C:\_nick\working\NetworkPlayground\Client\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache

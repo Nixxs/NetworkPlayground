@@ -11,6 +11,7 @@ namespace Client
     class Program
     {
         private static NetClient s_client;
+        private static string username;
 
         [STAThread]
         static void Main(string[] args)
@@ -28,24 +29,37 @@ namespace Client
             // define the host details
             string host = "localhost";
             int port = 14242;
+
+            Console.Write("Enter a username: ");
+            username = Console.ReadLine();
+
             // immediatly connect to the server on start up
             s_client.Start(); //start the client object running 
             NetOutgoingMessage hail = s_client.CreateMessage("Hi I'd like to connect to you please sir");
             s_client.Connect(host, port, hail);
 
-
-            Thread.Sleep(1); // give it a second to connect before starting the input loop
+            // keep polling for the connection to be connected
             while (true)
             {
-                Console.Write("> ");
-                string input = Console.ReadLine();
+                // once it's connected to the server wait for abit before allowing input
+                if (s_client.ConnectionStatus == NetConnectionStatus.Connected)
+                {
+                    Thread.Sleep(100); // give it a 100 milliseconds to connect before starting the input loop
+                    while (true)
+                    {
+                        Console.Write("> ");
+                        string input = Console.ReadLine();
+                        
+                        NetOutgoingMessage om = s_client.CreateMessage();
+                        om.Write(username);
+                        om.Write(input);
+                        s_client.SendMessage(om, NetDeliveryMethod.ReliableOrdered);
 
-                NetOutgoingMessage om = s_client.CreateMessage(input);
-                s_client.SendMessage(om, NetDeliveryMethod.ReliableOrdered);
-                Console.WriteLine("You: " + input);
-                s_client.FlushSendQueue();
+                        Console.WriteLine("> You: " + input);
+                        s_client.FlushSendQueue();
+                    }
+                }
             }
-
         }
 
         public static void GotMessage(object peer)
@@ -74,6 +88,7 @@ namespace Client
                     case NetIncomingMessageType.Data: // got a message from the server
                         string message = im.ReadString();
                         Console.WriteLine(message);
+                        Console.Write("> ");
                         break;
                     default:
                         Console.WriteLine("Got some kind of random type: " + im.MessageType);

@@ -46,6 +46,9 @@ namespace Server
                             }
                             break;
                         case NetIncomingMessageType.Data: // if we get some message from a client
+                            // this is wierd, if you have 2 strings you need to read them in the correct order that they were wirrten to the outgoing message
+                            // on the client side i've put int om.Write(the user name string); om.Write(the message string);
+                            string username = im.ReadString();
                             string message = im.ReadString();
                             Console.WriteLine("Recieved message, Broadcasting: " + message);
                             List<NetConnection> all = s_server.Connections; // get a copy of all the current connections
@@ -54,7 +57,7 @@ namespace Server
                             if (all.Count > 0)// if there is more than 1 user connected to the server send the message, otherwise why bother
                             {
                                 NetOutgoingMessage outgoing_message = s_server.CreateMessage(); // create out going message object
-                                outgoing_message.Write(NetUtility.ToHexString(im.SenderConnection.RemoteUniqueIdentifier) + " said: " + message); // define the message try using outgoing_message.Data to see if we can send objects
+                                outgoing_message.Write(username + " said: " + message); // define the message try using outgoing_message.Data to see if we can send objects
                                 s_server.SendMessage(outgoing_message, all, NetDeliveryMethod.ReliableOrdered, 0); // send the message 
                             }
                             break;

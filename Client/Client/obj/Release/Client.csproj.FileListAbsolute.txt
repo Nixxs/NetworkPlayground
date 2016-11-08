@@ -1,0 +1,9 @@
+C:\_nick\working\NetworkPlayground\Client\Client\bin\Release\Client.exe.config
+C:\_nick\working\NetworkPlayground\Client\Client\obj\Release\Client.csprojResolveAssemblyReference.cache
+C:\_nick\working\NetworkPlayground\Client\Client\bin\Release\Client.exe
+C:\_nick\working\NetworkPlayground\Client\Client\bin\Release\Client.pdb
+C:\_nick\working\NetworkPlayground\Client\Client\bin\Release\Lidgren.Network.dll
+C:\_nick\working\NetworkPlayground\Client\Client\bin\Release\Lidgren.Network.pdb
+C:\_nick\working\NetworkPlayground\Client\Client\bin\Release\Lidgren.Network.xml
+C:\_nick\working\NetworkPlayground\Client\Client\obj\Release\Client.exe
+C:\_nick\working\NetworkPlayground\Client\Client\obj\Release\Client.pdb
